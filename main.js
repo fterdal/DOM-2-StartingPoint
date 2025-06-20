@@ -5,3 +5,40 @@ root.addEventListener("click", (event) => {
   console.log(event.target.tagName);
   console.log(event.target);
 });
+
+const button = document.getElementById("add-column");
+
+button.addEventListener("click", () => {
+  const rows = document.querySelectorAll("table tr");
+  rows.forEach(row => {
+    const newCell = document.createElement("td");
+    row.appendChild(newCell);
+  });
+});
+
+const cells = document.querySelectorAll("td");
+
+let isMouseDown = false;
+const colorSelect = document.getElementById("color-select");
+
+cells.forEach(cell => {
+  cell.addEventListener("mousedown", () => {
+    isMouseDown = true;
+    cell.style.backgroundColor = colorSelect.value;
+  });
+
+  cell.addEventListener("mouseover", () => {
+    if (isMouseDown) {
+      cell.style.backgroundColor = colorSelect.value;
+    }
+  });
+
+  cell.addEventListener("mouseup", () => {
+    isMouseDown = false;
+  });
+});
+
+document.addEventListener("mouseup", () => {
+  isMouseDown = false;
+});
+
