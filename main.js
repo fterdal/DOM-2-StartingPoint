@@ -18,6 +18,17 @@ addRows.addEventListener("click", () => {
   }
 });
 
+// add columns to grid
+
+const addColumns = document.getElementById("add-column");
+
+addColumns.addEventListener("click", () => {
+  for (let i = 0; i < getTable.rows.length; i++) {
+    const row = getTable.rows[i];
+    const newCells = document.createElement("td");
+    row.appendChild(newCells);
+  }
+
 // Emmanuel
 
 // Select a color from a dropdown menu of colors
