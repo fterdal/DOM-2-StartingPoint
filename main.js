@@ -30,6 +30,16 @@ addColumns.addEventListener("click", () => {
   }
 });
 
+// remove rows from the grid
+
+const deleteRows = document.getElementById("delete-rows");
+
+deleteRows.addEventListener("click", () => {
+  if (getTable.rows.length > 0) {
+    getTable.deleteRow(getTable.rows.length - 1);
+  }
+  console.log("rows have been deleted from the table with event listener");
+
 // Emmanuel
 
 // Select a color from a dropdown menu of colors
