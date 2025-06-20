@@ -5,3 +5,17 @@ root.addEventListener("click", (event) => {
   console.log(event.target.tagName);
   console.log(event.target);
 });
+
+const addRow = document.getElementById("add-row");
+{
+  addRow.addEventListener("click", () =>
+  {
+    
+
+
+
+  });
+
+
+
+}
