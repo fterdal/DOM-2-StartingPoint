@@ -2,18 +2,18 @@ const root = document.getElementById("root");
 const row = document.getElementById("add-row");
 const column = document.getElementById("add-column");
 
+
 root.addEventListener("click", (event) => {
   console.log(event.target.tagName);
   console.log(event.target);
 });
 
 row.addEventListener("click", () => {
-  addRowToGrid();
+  addRowToGrid(columnCount);
 });
 
 const tbody = document.querySelector("tbody");
 columnCount = tbody.rows[0].cells.length;
-
 
 
 // Add rows to the grid
@@ -22,20 +22,25 @@ function addRowToGrid(columnCount) {
 
   for (let i = 0; i < columnCount; i++) {
     const cell = document.createElement("td");
-    newRow.appendChild(cell);
+    newRow.append(cell);
   }
-
-  tbody.appendChild(newRow);
-  console.log(tbody);
+  tbody.append(newRow);
 }
 
 
 
-
-
-
 //add columns to the grid
+function addRowToGrid(columnCount) {
+  const newRow = document.createElement("tr");
 
+  for (let i = 0; i < columnCount; i++) {
+    const cell = document.createElement("td");
+    newRow.append(cell);
+  }
+  console.log(newRow);
+  tbody.append(newRow);
+  console.log(tbody);
+}
 
 
 
