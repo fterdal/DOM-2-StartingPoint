@@ -4,6 +4,15 @@ const root = document.getElementById("root");
 const allCells = [...document.querySelectorAll("td")];
 let filling = false;
 
+const removeColumnsButton = document.getElementById("remove-column");
+const columnsToRemove = document.getElementsByTagName("tr");
+
+removeColumnsButton.addEventListener("click", () => {
+  for (let i = 0; i < columnsToRemove.length; i++) {
+    columnsToRemove[i].children[0].remove();
+  }
+});
+
 root.addEventListener("click", (event) => {
   console.log(event.target.tagName);
   console.log(event.target);
