@@ -39,6 +39,20 @@ deleteRows.addEventListener("click", () => {
     getTable.deleteRow(getTable.rows.length - 1);
   }
   console.log("rows have been deleted from the table with event listener");
+});
+
+//remove columns from grid
+
+const deleteColumns = document.getElementById("delete-columns");
+
+deleteColumns.addEventListener("click", () => {
+  for (let i = 0; i < getTable.rows.length; i++) {
+    const row = getTable.rows[i];
+    if (row.cells.length > 0) {
+      row.deleteCell(row.cells.length - 1);
+    }
+  }
+});
 
 // Emmanuel
 
