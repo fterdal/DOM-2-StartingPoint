@@ -33,6 +33,9 @@ root.addEventListener("click", (event) => {
 // such that all affected/hovered-over cells from start to end change to the currently
 // selected color
 allCells.forEach((e) => {
+  e.addEventListener("click", () => {
+    e.style.backgroundColor = GetCurrentColor();
+  });
   e.addEventListener("mousedown", (event) => {
     filling = true;
     e.style.backgroundColor = GetCurrentColor();
