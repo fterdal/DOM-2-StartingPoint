@@ -3,6 +3,7 @@
 const root = document.getElementById("root");
 const allCells = [...document.querySelectorAll("td")];
 let filling = false;
+
 root.addEventListener("click", (event) => {
   console.log(event.target.tagName);
   console.log(event.target);
