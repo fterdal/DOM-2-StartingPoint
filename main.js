@@ -65,7 +65,6 @@ colorSelect.addEventListener("change", () => {
 });
 
 
-
 // fill all cells with selected color
 function fillAllCells() {
   const color = document.getElementById('color-select').value;
@@ -76,6 +75,7 @@ function fillAllCells() {
   });
 }
 
+
 // clear all cells
 function clearAllCells() {
   const cells = document.querySelectorAll('td');
@@ -85,12 +85,14 @@ function clearAllCells() {
   });
 }
 
-// color helper test
+// color helper
 function colorCell(e) {
   const color = document.getElementById("color-select").value;
   e.target.style.backgroundColor = color;
 }
 
+
+// Emmanuel features-end 
 
 /* click and hold (mouseover) from a single cell (start) to a different cell (end) 
 such that all affected/hovered-over cells from start to end change to the currently selected color
