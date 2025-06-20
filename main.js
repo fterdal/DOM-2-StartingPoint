@@ -17,6 +17,8 @@ root.addEventListener("click", (event) => {
   } 
   else if (event.target.id === "clear-grid") {
     // Clear all cells/restore all cells to their original/initial color
+    const allCells = document.querySelectorAll("td");
+    [...allCells].forEach((e) => {e.style.backgroundColor = "";});
   }
   else if (event.target.tagName === "TD") {
     // Click and hold (mouseover) from a single cell (start) to a different cell (end)
