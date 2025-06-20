@@ -35,12 +35,17 @@ addColumns.addEventListener("click", () => {
 const deleteRows = document.getElementById("delete-rows");
 
 deleteRows.addEventListener("click", () => {
-  // for (let i = getTable.rows.length - 1; i >= 0; i--) {
-  //   getTable.deleteRow(i);
-  // }
-
   if (getTable.rows.length > 0) {
     getTable.deleteRow(getTable.rows.length - 1);
   }
   console.log("rows have been deleted from the table with event listener");
+
+// Emmanuel
+
+// Select a color from a dropdown menu of colors
+const colorSelect = document.getElementById("color-select");
+
+colorSelect.addEventListener("change", () => {
+  const selectedColor = colorSelect.value;
+  console.log("Selected color: ", selectedColor);
 });
