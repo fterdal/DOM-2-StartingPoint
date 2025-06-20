@@ -38,5 +38,5 @@ deleteRows.addEventListener("click", () => {
   for (let i = getTable.rows.length - 1; i >= 0; i--) {
     getTable.deleteRow(i);
   }
-  console.log("rows have been deleted from the table");
+  console.log("rows have been deleted from the table with event listener");
 });
