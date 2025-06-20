@@ -35,8 +35,12 @@ addColumns.addEventListener("click", () => {
 const deleteRows = document.getElementById("delete-rows");
 
 deleteRows.addEventListener("click", () => {
-  for (let i = getTable.rows.length - 1; i >= 0; i--) {
-    getTable.deleteRow(i);
+  // for (let i = getTable.rows.length - 1; i >= 0; i--) {
+  //   getTable.deleteRow(i);
+  // }
+
+  if (getTable.rows.length > 0) {
+    getTable.deleteRow(getTable.rows.length - 1);
   }
   console.log("rows have been deleted from the table with event listener");
 });
