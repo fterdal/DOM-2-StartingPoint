@@ -28,6 +28,7 @@ addColumns.addEventListener("click", () => {
     const newCells = document.createElement("td");
     row.appendChild(newCells);
   }
+});
 
 // Emmanuel
 
