@@ -5,3 +5,15 @@ root.addEventListener("click", (event) => {
   console.log(event.target.tagName);
   console.log(event.target);
 });
+
+//add rows to the grid
+const addRows = document.getElementById("add-row");
+const getTable = root.querySelector("table");
+
+addRows.addEventListener("click", () => {
+  const newRow = getTable.insertRow();
+  console.log("new row added");
+  for (let i = 0; i < getTable.rows[0].cells.length; i++) {
+    const newCells = newRow.insertCell();
+  }
+});
