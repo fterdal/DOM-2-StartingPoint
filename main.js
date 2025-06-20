@@ -7,9 +7,14 @@ root.addEventListener("click", (event) => {
   console.log(event.target.tagName);
   console.log(event.target);
 
-  if (event.target.id === "fill-grid") {
+  if (event.target.id === "fill-unfilled") {
     // Fill all uncolored cells with the currently selected color
-
+    allCells.forEach((e) => {
+        if (e.style.backgroundColor === "")
+            e.style.backgroundColor = GetCurrentColor();
+    });
+  }
+  else if (event.target.id === "fill-entire") {
     // Fill all cells with the currently selected color
     allCells.forEach((e) => { e.style.backgroundColor = GetCurrentColor(); });
   } 
