@@ -1,6 +1,7 @@
 // Please feel free to change the JS as you see fit! This is just a starting point.
 
 const root = document.getElementById("root");
+const allCells = [...document.querySelectorAll("td")];
 root.addEventListener("click", (event) => {
   console.log(event.target.tagName);
   console.log(event.target);
@@ -12,13 +13,11 @@ root.addEventListener("click", (event) => {
     // Fill all uncolored cells with the currently selected color
 
     // Fill all cells with the currently selected color
-    const allCells = document.querySelectorAll("td");
-    [...allCells].forEach((e) => {e.style.backgroundColor = currentColor;});
+    allCells.forEach((e) => {e.style.backgroundColor = currentColor;});
   } 
   else if (event.target.id === "clear-grid") {
     // Clear all cells/restore all cells to their original/initial color
-    const allCells = document.querySelectorAll("td");
-    [...allCells].forEach((e) => {e.style.backgroundColor = "";});
+    allCells.forEach((e) => {e.style.backgroundColor = "";});
   }
   else if (event.target.tagName === "TD") {
     // Click and hold (mouseover) from a single cell (start) to a different cell (end)
@@ -27,4 +26,6 @@ root.addEventListener("click", (event) => {
 
   }
 });
+
+
 
