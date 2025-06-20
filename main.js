@@ -3,6 +3,7 @@
 const root = document.getElementById("root");
 const allCells = [...document.querySelectorAll("td")];
 let filling = false;
+
 root.addEventListener("click", (event) => {
   console.log(event.target.tagName);
   console.log(event.target);
@@ -10,36 +11,37 @@ root.addEventListener("click", (event) => {
   if (event.target.id === "fill-unfilled") {
     // Fill all uncolored cells with the currently selected color
     allCells.forEach((e) => {
-        if (e.style.backgroundColor === "")
-            e.style.backgroundColor = GetCurrentColor();
+      if (e.style.backgroundColor === "")
+        e.style.backgroundColor = GetCurrentColor();
+    });
+  } else if (event.target.id === "fill-entire") {
+    // Fill all cells with the currently selected color
+    allCells.forEach((e) => {
+      e.style.backgroundColor = GetCurrentColor();
+    });
+  } else if (event.target.id === "clear-grid") {
+    // Clear all cells/restore all cells to their original/initial color
+    allCells.forEach((e) => {
+      e.style.backgroundColor = "";
     });
   }
-  else if (event.target.id === "fill-entire") {
-    // Fill all cells with the currently selected color
-    allCells.forEach((e) => { e.style.backgroundColor = GetCurrentColor(); });
-  } 
-  else if (event.target.id === "clear-grid") {
-    // Clear all cells/restore all cells to their original/initial color
-    allCells.forEach((e) => { e.style.backgroundColor = ""; });
-  }
-  
+
   filling = false;
 });
 
 // Click and hold (mouseover) from a single cell (start) to a different cell (end)
 // such that all affected/hovered-over cells from start to end change to the currently
 // selected color
-allCells.forEach((e) => { 
-    e.addEventListener("mousedown",  (event) => {
-        filling = true;
-        e.style.backgroundColor = GetCurrentColor();
-    }); 
-    e.addEventListener("mouseover", (event) => {
-        if (filling)
-            e.style.backgroundColor = GetCurrentColor();
-    });
+allCells.forEach((e) => {
+  e.addEventListener("mousedown", (event) => {
+    filling = true;
+    e.style.backgroundColor = GetCurrentColor();
+  });
+  e.addEventListener("mouseover", (event) => {
+    if (filling) e.style.backgroundColor = GetCurrentColor();
+  });
 });
 
 function GetCurrentColor() {
-    return document.getElementById("color-select").value;
+  return document.getElementById("color-select").value;
 }
