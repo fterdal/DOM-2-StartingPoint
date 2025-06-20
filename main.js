@@ -1,93 +1,115 @@
-const root = document.getElementById("root");
-const addRow = document.getElementById("add-row");
-const addColumn = document.getElementById("add-column");
+/*[✅] Add rows to the grid
+[✅] Add columns to the grid
+[✅] Remove rows from the grid
+[✅] Remove columns from the grid
+[ ] Select a color from a dropdown menu of colors
+[ ] Click on a single cell, changing its color to the currently selected color
+[ ] Fill all uncolored cells with the currently selected color
+[ ] Fill all cells with the currently selected color
+[ ] Clear all cells / restore all cells to their original/initial color
+[ ] Click and hold (mouseover) from a single cell (start) to a different cell (end) such that all affected/hovered-over cells from start to end change to the currently selected color
+*/
 
 
-root.addEventListener("click", (event) => {
-  console.log(event.target.tagName);
-  console.log(event.target);
-});
 
-addRow.addEventListener("click", () => {
+const tbody = document.querySelector("tbody");
+const addRowBtn = document.getElementById("add-row");
+const addColumnBtn = document.getElementById("add-column");
+
+
+/////////////////////////////-------->// Adds a row to the grid when the "Add Row" button is clicked <---- //////////////////////
+
+addRowBtn.addEventListener("click", () => {
+  const columnCount = tbody.rows[0].cells.length;
   addRowToGrid(columnCount);
 });
 
-const tbody = document.querySelector("tbody");
-columnCount = tbody.rows[0].cells.length;
-
-
-// Add rows to the grid
 function addRowToGrid(columnCount) {
   const newRow = document.createElement("tr");
-
   for (let i = 0; i < columnCount; i++) {
     const cell = document.createElement("td");
-    newRow.append(cell);
-  }
-  tbody.append(newRow);
+    newRow.appendChild(cell);
+}
+  tbody.appendChild(newRow);
 }
 
-
-
-//add columns to the grid
-addColumn.addEventListener("click", () => {
+////////////////////////////////--------> Adds a column to the grid when the "Add Column" button is clicked <---- //////////////////////
+addColumnBtn.addEventListener("click", () => {
   addColumnToGrid();
 });
 
 function addColumnToGrid() {
-   const rows = document.querySelectorAll("tr");
-
-   rows.forEach((row)=>{
-    const newCol = document.createElement("td");
-    row.append(newCol);
-   })
-   columnCount ++;
-
+  // Add one cell to each existing row
+  for (let row of tbody.rows) {
+    const newCell = document.createElement("td");
+    row.appendChild(newCell);
+  }
 }
 
 
-
-//remove rows from the grid
-
-
+/////////////////////////////-------->// Remove rows from the grid <---- ////////////////////////////////////////////////
+                          // Remove Button added to HTML under id "remove-row"
 
 
+const removeRowBtn = document.getElementById("remove-row");
+removeRowBtn.addEventListener("click", () => {
+  if (tbody.rows.length > 0){
+    tbody.deleteRow(tbody.rows.length - 1); 
+  }
+});
 
 
+/////////////////////////////-------->// Remove columns from the grid <---- ////////////////////////////////////////////////
+const removeColumnBtn = document.getElementById("remove-column");
+removeColumnBtn.addEventListener("click", () => {
+  if (tbody.rows.length > 0 && tbody.rows[0].cells.length > 0) {
+    for (let row of tbody.rows) {
+      row.deleteCell(row.cells.length - 1);
+    }
+  }
+});
 
-//remove columns from the grid
 
+//////////////////////////////-------->// Select a color from a dropdown menu of colors <---- ////////////////////////////////////////////////
 
-
-
-
-
-
-//select a color from a dropdown menu of colors
- 
- 
- 
  
  
  
 
 //click on a single cell, changing its color to the currently selected color
+
  
- 
- 
- 
- 
- 
+
 //fill all uncolored cells with the currently selected color
+const fillUncoloredBtn = document.getElementById("fill-uncolored");
 
+fillUncoloredBtn.addEventListener("click", () => {
+  fillUncoloredCells(color);
+});
 
-
-
-
+function fillUncoloredCells(color) {
+  const cells = document.querySelectorAll("td");
+  cells.forEach((cell) => {
+    if (!cell.style.backgroundColor) {
+      cell.style.backgroundColor = color;
+    }
+  });
+}
 
 
 // fill all cells with the currently selected color
- 
+const fillAllBtn = document.getElementById("fill-grid");
+
+fillAllBtn.addEventListener("click", () => {
+  fillAllCells(color);
+});
+
+function fillAllCells(color) {
+  const cells = document.querySelectorAll("td");
+  cells.forEach((cell) => {
+    cell.style.backgroundColor = color;
+  });
+}
 
 
 
@@ -95,11 +117,23 @@ function addColumnToGrid() {
 
 
 //clear all cells/restore all cells to their original/initial color
- 
+const clearGridBtn = document.getElementById("clear-grid");
 
+clearGridBtn.addEventListener("click", () => {
+  clearAllCells();
+});
 
+function clearAllCells() {
+  const cells = document.querySelectorAll("td");
+  cells.forEach((cell) => {
+    cell.style.backgroundColor = "";
+  });
+}
 
 
 
 
 //click and hold (mouseover) from a single cell (start) to a different cell (end) such that all affected/hovered-over cells from start to end change to the currently selected color
+
+
+
