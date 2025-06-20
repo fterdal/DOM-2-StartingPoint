@@ -16,3 +16,29 @@ button.addEventListener("click", () => {
   });
 });
 
+const cells = document.querySelectorAll("td");
+
+let isMouseDown = false;
+const colorSelect = document.getElementById("color-select");
+
+cells.forEach(cell => {
+  cell.addEventListener("mousedown", () => {
+    isMouseDown = true;
+    cell.style.backgroundColor = colorSelect.value;
+  });
+
+  cell.addEventListener("mouseover", () => {
+    if (isMouseDown) {
+      cell.style.backgroundColor = colorSelect.value;
+    }
+  });
+
+  cell.addEventListener("mouseup", () => {
+    isMouseDown = false;
+  });
+});
+
+document.addEventListener("mouseup", () => {
+  isMouseDown = false;
+});
+
