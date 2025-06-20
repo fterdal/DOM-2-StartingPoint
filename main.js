@@ -17,3 +17,13 @@ addRows.addEventListener("click", () => {
     const newCells = newRow.insertCell();
   }
 });
+
+// Emmanuel
+
+// Select a color from a dropdown menu of colors
+const colorSelect = document.getElementById("color-select");
+
+colorSelect.addEventListener("change", () => {
+  const selectedColor = colorSelect.value;
+  console.log("Selected color: ", selectedColor);
+});
