@@ -5,3 +5,29 @@ root.addEventListener("click", (event) => {
   console.log(event.target.tagName);
   console.log(event.target);
 });
+
+let table = document.querySelector("TABLE")
+const addRowBtn = document.getElementById("add-row")
+let rows = document.getElementsByTagName("TR")
+let tdCount = rows[0].querySelectorAll("TD").length
+
+addRowBtn.addEventListener("click", function addRow(){
+    let newRow = document.createElement("TR")
+
+    for (let i = 0; i < tdCount; i++)
+      newRow.appendChild(document.createElement("TD"))
+    
+    table.appendChild(newRow)
+    
+})
+function fillEveryCell(){
+    console.log("🟡 fillEveryCell triggered");
+    const cells = document.querySelectorAll("td");
+    const selectedClr = document.getElementById("colorSelector").value;
+
+    cells.forEach(cell =>{
+        cell.style.backgroundColor =selectedClr;
+    });
+}
+document.getElementById("fill-uncolored").addEventListener("click", fillEveryCell);
+
