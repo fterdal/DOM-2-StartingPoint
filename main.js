@@ -29,3 +29,14 @@ addColumns.addEventListener("click", () => {
     row.appendChild(newCells);
   }
 });
+
+// remove rows from the grid
+
+const deleteRows = document.getElementById("delete-rows");
+
+deleteRows.addEventListener("click", () => {
+  for (let i = getTable.rows.length - 1; i >= 0; i--) {
+    getTable.deleteRow(i);
+  }
+  console.log("rows have been deleted from the table");
+});
