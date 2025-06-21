@@ -56,3 +56,38 @@ allCells.forEach((e) => {
 function GetCurrentColor() {
   return document.getElementById("color-select").value;
 }
+// Add Column
+const addColumnButton = document.getElementById("add-column");
+const rowsToAddColumn = document.getElementsByTagName("tr");
+
+addColumnButton.addEventListener("click", () => {
+  for (let i = 0; i < rowsToAddColumn.length; i++) {
+    rowsToAddColumn[i].appendChild(document.createElement("td"));
+  }
+});
+
+// Add Row
+const addRowButton = document.getElementById("add-row");
+const rowsToAddRow = document.getElementsByTagName("tr");
+
+addRowButton.addEventListener("click", () => {
+  const table = rowsToAddRow[0].parentNode;
+  const newRow = document.createElement("tr");
+  const colCount = rowsToAddRow[0].children.length;
+
+  for (let i = 0; i < colCount; i++) {
+    newRow.appendChild(document.createElement("td"));
+  }
+
+  table.appendChild(newRow);
+});
+
+//Remove Row
+const removeRowButton = document.getElementById("remove-row");
+const rowsToRemove = document.getElementsByTagName("tr");
+
+removeRowButton.addEventListener("click", () => {
+  if (rowsToRemove.length > 0) {
+    rowsToRemove[0].remove();
+  }
+});
